@@ -5,27 +5,170 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>RoomyRent — Download APK</title>
   <meta name="description" content="Download the official RoomyRent Android app APK." />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    body {font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; margin:0; background:#f8fafc; color:#0f172a;}
-    header {background:#0f172a; color:#f8fafc; padding:32px 16px; text-align:center;}
-    header h1 {margin:0; font-size:36px;}
-    header p {margin:8px 0 0; font-size:18px; opacity:.85;}
+    /* Basic Reset */
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg,#1e3c72,#2a5298);
+      color:#f8f8f8;
+      min-height:100vh;
+      overflow-x:hidden;
+    }
 
-    main {max-width:900px; margin:40px auto; padding:0 16px;}
-    .hero {text-align:center; margin-bottom:40px;}
-    .hero img.logo {width:100px; border-radius:20px; margin-bottom:20px;}
-    .btn {display:inline-block; padding:14px 26px; font-size:18px; font-weight:600;
-          border-radius:12px; background:#22c55e; color:#111827; text-decoration:none;}
-    .btn:hover {background:#16a34a;}
-    .btn:active {transform:translateY(1px);}
-    .note {margin-top:12px; font-size:14px; color:#475569;}
+    /* Header with Glass Effect */
+    header {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(15px);
+      color: #fff;
+      padding: 60px 16px;
+      text-align:center;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    }
+    header h1 {font-size:48px; margin-bottom:10px; letter-spacing:1px;}
+    header p {font-size:20px; opacity:.85;}
 
-    section {margin:60px 0;}
-    h2 {font-size:26px; margin-bottom:16px; text-align:center;}
-    .screenshots {display:flex; flex-wrap:wrap; gap:16px; justify-content:center;}
-    .screenshots img {width:260px; border-radius:12px; box-shadow:0 6px 16px rgba(0,0,0,.15);}
+    main {max-width:1000px; margin:40px auto; padding:0 16px;}
 
-    footer {text-align:center; padding:24px; font-size:14px; color:#475569;}
+    /* Hero Section */
+    .hero {
+      text-align:center;
+      margin-bottom:60px;
+      position:relative;
+    }
+    .hero img.logo {
+      width:120px;
+      border-radius:20px;
+      margin-bottom:20px;
+      transition: transform .4s ease;
+    }
+    .hero img.logo:hover {
+      transform: rotateY(20deg) scale(1.05);
+    }
+    .btn {
+      display:inline-block;
+      padding:16px 32px;
+      font-size:20px;
+      font-weight:700;
+      border-radius:16px;
+      background: linear-gradient(45deg,#22c55e,#16a34a);
+      color:#111827;
+      text-decoration:none;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      transition: all .3s ease;
+    }
+    .btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    }
+    .note {margin-top:12px; font-size:14px; color:#cbd5e1;}
+
+    /* Screenshots Section */
+    section {margin:80px 0; text-align:center;}
+    h2 {font-size:32px; margin-bottom:30px; text-align:center; color:#f1f5f9; letter-spacing:0.5px;}
+    .screenshots {
+      display:flex;
+      flex-wrap:wrap;
+      gap:24px;
+      justify-content:center;
+      perspective:1000px;
+    }
+    .screenshots img {
+      width:80px;
+      height:100px;
+      border-radius:20px;
+      box-shadow:0 16px 40px rgba(0,0,0,.35);
+      transition: transform .5s ease, box-shadow .5s ease;
+    }
+    .screenshots img:hover {
+      transform: rotateY(10deg) rotateX(5deg) scale(1.05);
+      box-shadow:0 24px 60px rgba(0,0,0,.5);
+    }
+
+    /* About Section Glass Card */
+    .glass-card {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(20px);
+      padding:40px 30px;
+      border-radius:20px;
+      max-width:700px;
+      margin:0 auto;
+      box-shadow:0 16px 40px rgba(0,0,0,0.3);
+      transition: transform .3s ease;
+    }
+    .glass-card:hover {
+      transform: translateY(-10px) scale(1.02);
+    }
+    .glass-card p {
+      line-height:1.8;
+      font-size:18px;
+      color:#e0e7ff;
+    }
+
+    footer {
+      text-align:center;
+      padding:32px 16px;
+      font-size:16px;
+      color:#cbd5e1;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Subtle Floating Animation */
+    @keyframes float {
+      0% { transform: translateY(0px);}
+      50% { transform: translateY(-10px);}
+      100% { transform: translateY(0px);}
+    }
+    .hero img.logo {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    /* Scrollbar Styling */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.05);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.3);
+      border-radius:10px;
+    }
+
+    /* Marquee effect: scroll right to left */
+.screenshot-marquee {
+  display: flex;
+  gap: 24px;
+  overflow: hidden;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.screenshot-marquee-inner {
+  display: flex;
+  gap: 24px;
+  animation: scroll-left 30s linear infinite;
+}
+
+.screenshot-marquee-inner img {
+  flex-shrink: 0;
+  width: 200px;
+  height: 300px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* Keyframes for continuous scroll */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
   </style>
 </head>
 <body>
@@ -38,38 +181,43 @@
   <main>
     <!-- Hero Section -->
     <div class="hero">
-      <!-- Replace logo.png with your real logo -->
       <img src="image/khudviveklogo.png" alt="RoomyRent Logo" class="logo" />
       <p>Download the latest version of the RoomyRent Android app.</p>
-
-      <!-- Replace the href with your real APK link -->
       <a class="btn" href="https://github.com/Vishnushrivastav111/roomyrentapk/releases/latest/download/roomyrent.apk" download>
         ⬇ Download APK
       </a>
       <div class="note">Latest secure version — installs directly on your Android phone.</div>
     </div>
 
-    <!-- Screenshots -->
     <section>
-      <h2>App Screenshots</h2>
-      <div class="screenshots">
-        <!-- Replace with your real screenshots -->
-        <img src="image/screenshot1.png" alt="RoomyRent Screenshot 1">
-        <img src="image/screenshot2.png" alt="RoomyRent Screenshot 2">
-        <img src="image/screenshot3.png" alt="RoomyRent Screenshot 3">
-        <img src="image/screenshot4.png" alt="RoomyRent Screenshot 4">
-        <img src="image/screenshot5.png" alt="RoomyRent Screenshot 5">
-        <img src="image/screenshot6.png" alt="RoomyRent Screenshot 5">
-      </div>
-    </section>
+  <h2>App Screenshots</h2>
+  <div class="screenshot-marquee">
+    <div class="screenshot-marquee-inner">
+      <img src="image/screenshot1.png" alt="RoomyRent Screenshot 1">
+      <img src="image/screenshot2.png" alt="RoomyRent Screenshot 2">
+      <img src="image/screenshot3.png" alt="RoomyRent Screenshot 3">
+      <img src="image/screenshot4.png" alt="RoomyRent Screenshot 4">
+      <img src="image/screenshot5.png" alt="RoomyRent Screenshot 5">
+      <img src="image/screenshot6.png" alt="RoomyRent Screenshot 6">
+      <!-- Repeat images to make scroll seamless -->
+      <img src="image/screenshot1.png" alt="RoomyRent Screenshot 1">
+      <img src="image/screenshot2.png" alt="RoomyRent Screenshot 2">
+      <img src="image/screenshot3.png" alt="RoomyRent Screenshot 3">
+    </div>
+  </div>
+</section>
+
 
     <!-- About Section -->
     <section>
       <h2>Why RoomyRent?</h2>
-      <p style="text-align:center; max-width:600px; margin:0 auto; line-height:1.6;">
-        RoomyRent helps students, professionals and families find affordable rental rooms
-        quickly and manage their stays with ease. Simple UI, verified listings and fast booking.
-      </p>
+      <div class="glass-card">
+        <p>
+          RoomyRent helps students, professionals, and families find affordable rental rooms
+          quickly and manage their stays with ease. Experience a sleek UI, verified listings,
+          and fast booking—all in one app.
+        </p>
+      </div>
     </section>
   </main>
 
