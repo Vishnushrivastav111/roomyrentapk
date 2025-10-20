@@ -3,227 +3,466 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RoomyRent — Download APK</title>
-  <meta name="description" content="Download the official RoomyRent Android app APK." />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <title>RoomyRent — Official Android App</title>
+  <meta name="description" content="Download the official RoomyRent Android app to find, rent, and manage rooms effortlessly." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    /* Basic Reset */
-    * {margin:0; padding:0; box-sizing:border-box;}
+    /* Reset & Base */
+    * { margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth; }
     body {
-      font-family: 'Roboto', sans-serif;
-      background: linear-gradient(135deg,#1e3c72,#2a5298);
-      color:#f8f8f8;
-      min-height:100vh;
-      overflow-x:hidden;
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top left, #1e3c72, #2a5298 50%, #0f172a);
+      color: #f8fafc;
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    /* Header with Glass Effect */
     header {
+      text-align: center;
+      padding: 80px 20px 60px;
       background: rgba(255,255,255,0.05);
-      backdrop-filter: blur(15px);
-      color: #fff;
-      padding: 60px 16px;
-      text-align:center;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.25);
     }
-    header h1 {font-size:48px; margin-bottom:10px; letter-spacing:1px;}
-    header p {font-size:20px; opacity:.85;}
 
-    main {max-width:1000px; margin:40px auto; padding:0 16px;}
+    header h1 {
+      font-size: 3rem;
+      background: linear-gradient(90deg, #38bdf8, #22c55e);
+      -webkit-background-clip: text;
+      color: transparent;
+      font-weight: 700;
+    }
+
+    header p { font-size: 1.2rem; color: #dbeafe; }
+
+    main {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
 
     /* Hero Section */
     .hero {
-      text-align:center;
-      margin-bottom:60px;
-      position:relative;
+      text-align: center;
+      margin-bottom: 80px;
+      animation: fadeIn 1.5s ease;
     }
+
     .hero img.logo {
-      width:120px;
-      border-radius:20px;
-      margin-bottom:20px;
-      transition: transform .4s ease;
+      width: 140px;
+      border-radius: 24px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+      animation: float 4s ease-in-out infinite;
+      margin-bottom: 24px;
     }
-    .hero img.logo:hover {
-      transform: rotateY(20deg) scale(1.05);
-    }
+
     .btn {
-      display:inline-block;
-      padding:16px 32px;
-      font-size:20px;
-      font-weight:700;
-      border-radius:16px;
-      background: linear-gradient(45deg,#22c55e,#16a34a);
-      color:#111827;
-      text-decoration:none;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      display: inline-block;
+      padding: 16px 40px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 14px;
+      background: linear-gradient(90deg, #22c55e, #16a34a);
+      color: #111827;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.45);
+    }
+
+    /* Screenshot Marquee */
+    .screenshot-marquee {
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+    }
+
+    .screenshot-marquee-inner {
+      display: flex;
+      gap: 30px;
+      animation: scroll-left 20s linear infinite;
+      will-change: transform;
+    }
+
+    .screenshot-marquee-inner:hover {
+      animation-play-state: paused;
+    }
+
+    .screenshot-marquee-inner img {
+      width: 220px;
+      height: 420px;
+      border-radius: 20px;
+      object-fit: cover;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+      cursor: pointer;
+      transition: transform .4s ease, box-shadow .4s ease;
+    }
+
+    .screenshot-marquee-inner img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.55);
+    }
+
+    /* Features Section */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+      margin: 60px 0;
+    }
+
+    .feature-card {
+      background: rgba(255,255,255,0.1);
+      padding: 30px 20px;
+      border-radius: 18px;
+      text-align: center;
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover { transform: translateY(-5px); }
+
+    .feature-card h3 {
+      color: #38bdf8;
+      margin-bottom: 10px;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      margin: 80px 0;
+      text-align: center;
+    }
+
+    .testimonial {
+      background: rgba(255,255,255,0.08);
+      padding: 30px;
+      border-radius: 16px;
+      margin: 20px auto;
+      max-width: 700px;
+      font-style: italic;
+    }
+
+    .testimonial span {
+      display: block;
+      margin-top: 10px;
+      font-weight: 600;
+      color: #38bdf8;
+    }
+
+    /* FAQ Section */
+    .faq {
+      margin: 60px auto;
+      max-width: 800px;
+    }
+
+    details {
+      background: rgba(255,255,255,0.08);
+      padding: 16px 20px;
+      border-radius: 12px;
+      margin: 10px 0;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    details:hover { background: rgba(255,255,255,0.12); }
+
+    summary {
+      font-weight: 600;
+      color: #f8fafc;
+    }
+
+    details p {
+      margin-top: 10px;
+      color: #cbd5e1;
+    }
+
+    /* Help & Support */
+    .support {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      padding: 50px 30px;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 800px;
+      margin: 60px auto;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+    }
+
+    .support a {
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .support a:hover { text-decoration: underline; }
+
+    a:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.95rem;
+      color: #94a3b8;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.03);
+    }
+
+    /* Floating Download */
+    .floating-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(90deg, #22c55e, #16a34a);
+      color: #111827;
+      font-weight: 700;
+      padding: 14px 30px;
+      border-radius: 50px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      text-decoration: none;
+      z-index: 999;
       transition: all .3s ease;
     }
-    .btn:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
-    }
-    .note {margin-top:12px; font-size:14px; color:#cbd5e1;}
+    .floating-btn:hover { transform: translateY(-3px) scale(1.05); }
 
-    /* Screenshots Section */
-    section {margin:80px 0; text-align:center;}
-    h2 {font-size:32px; margin-bottom:30px; text-align:center; color:#f1f5f9; letter-spacing:0.5px;}
-    .screenshots {
-      display:flex;
-      flex-wrap:wrap;
-      gap:24px;
-      justify-content:center;
-      perspective:1000px;
-    }
-    .screenshots img {
-      width:80px;
-      height:100px;
-      border-radius:20px;
-      box-shadow:0 16px 40px rgba(0,0,0,.35);
-      transition: transform .5s ease, box-shadow .5s ease;
-    }
-    .screenshots img:hover {
-      transform: rotateY(10deg) rotateX(5deg) scale(1.05);
-      box-shadow:0 24px 60px rgba(0,0,0,.5);
+    /* Back to Top */
+    #backToTop {
+      position: fixed;
+      bottom: 80px;
+      right: 25px;
+      background: #38bdf8;
+      color: #0f172a;
+      font-weight: bold;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      display: none;
     }
 
-    /* About Section Glass Card */
-    .glass-card {
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(20px);
-      padding:40px 30px;
-      border-radius:20px;
-      max-width:700px;
-      margin:0 auto;
-      box-shadow:0 16px 40px rgba(0,0,0,0.3);
-      transition: transform .3s ease;
-    }
-    .glass-card:hover {
-      transform: translateY(-10px) scale(1.02);
-    }
-    .glass-card p {
-      line-height:1.8;
-      font-size:18px;
-      color:#e0e7ff;
+    /* Modal for screenshots */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
     }
 
-    footer {
-      text-align:center;
-      padding:32px 16px;
-      font-size:16px;
-      color:#cbd5e1;
-      border-top: 1px solid rgba(255,255,255,0.1);
+    .modal img {
+      max-height: 90vh;
+      max-width: 90vw;
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.6);
     }
 
-    /* Subtle Floating Animation */
+    /* Animations */
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
     @keyframes float {
-      0% { transform: translateY(0px);}
-      50% { transform: translateY(-10px);}
-      100% { transform: translateY(0px);}
-    }
-    .hero img.logo {
-      animation: float 4s ease-in-out infinite;
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
-    /* Scrollbar Styling */
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-    ::-webkit-scrollbar-track {
-      background: rgba(255,255,255,0.05);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: rgba(255,255,255,0.3);
-      border-radius:10px;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Marquee effect: scroll right to left */
-.screenshot-marquee {
-  display: flex;
-  gap: 24px;
-  overflow: hidden;
-  padding-bottom: 20px;
-  position: relative;
-}
-
-.screenshot-marquee-inner {
-  display: flex;
-  gap: 24px;
-  animation: scroll-left 30s linear infinite;
-}
-
-.screenshot-marquee-inner img {
-  flex-shrink: 0;
-  width: 200px;
-  height: 300px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-}
-
-/* Keyframes for continuous scroll */
-@keyframes scroll-left {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 10px; }
+    @media(max-width:768px){
+      header h1{font-size:2.2rem;}
+      .screenshot-marquee-inner img{width:160px;height:300px;}
+    }
   </style>
 </head>
 <body>
 
   <header>
     <h1>RoomyRent</h1>
-    <p>Find, Rent & Manage Rooms Easily</p>
+    <p>Find, Rent & Manage Rooms — All in One App</p>
   </header>
 
   <main>
-    <!-- Hero Section -->
     <div class="hero">
-      <img src="image/khudviveklogo.png" alt="RoomyRent Logo" class="logo" />
-      <p>Download the latest version of the RoomyRent Android app.</p>
-      <a class="btn" href="https://github.com/Vishnushrivastav111/roomyrentapk/releases/latest/download/roomyrent.apk" download>
-        ⬇ Download APK
-      </a>
-      <div class="note">Latest secure version — installs directly on your Android phone.</div>
+      <img src="image/room.jpg" alt="RoomyRent Logo" class="logo" />
+      <p>Get your next room hassle-free. Fast, verified, and user-friendly.</p>
+      <a class="btn" href="https://github.com/Vishnushrivastav111/roomyrentapk/releases/latest/download/roomyrent.apk" download>⬇ Download APK</a>
+      <div class="note">Trusted by hundreds of tenants — Updated regularly.</div>
     </div>
 
     <section>
-  <h2>App Screenshots</h2>
-  <div class="screenshot-marquee">
-    <div class="screenshot-marquee-inner">
-      <img src="image/screenshot1.png" alt="RoomyRent Screenshot 1">
-      <img src="image/screenshot2.png" alt="RoomyRent Screenshot 2">
-      <img src="image/screenshot3.png" alt="RoomyRent Screenshot 3">
-      <img src="image/screenshot4.png" alt="RoomyRent Screenshot 4">
-      <img src="image/screenshot5.png" alt="RoomyRent Screenshot 5">
-      <img src="image/screenshot6.png" alt="RoomyRent Screenshot 6">
-      <!-- Repeat images to make scroll seamless -->
-      <img src="image/screenshot1.png" alt="RoomyRent Screenshot 1">
-      <img src="image/screenshot2.png" alt="RoomyRent Screenshot 2">
-      <img src="image/screenshot3.png" alt="RoomyRent Screenshot 3">
-    </div>
+      <h2>App Screenshots</h2>
+      <div class="screenshot-marquee">
+        <div class="screenshot-marquee-inner">
+          <img src="image/screenshot11.jpg">
+          <img src="image/screenshot12.jpg">
+          <img src="image/screenshot13.jpg">
+          <img src="image/screenshot14.jpg">
+          <img src="image/screenshot15.jpg">
+          <img src="image/screenshot16.jpg">
+          <!-- duplicated set for seamless looping -->
+          <img src="image/screenshot11.jpg">
+          <img src="image/screenshot12.jpg">
+          <img src="image/screenshot13.jpg">
+          <img src="image/screenshot14.jpg">
+          <img src="image/screenshot15.jpg">
+          <img src="image/screenshot16.jpg">
+          <!-- duplicated set for seamless looping -->
+          <img src="image/screenshot11.jpg">
+          <img src="image/screenshot12.jpg">
+          <img src="image/screenshot13.jpg">
+          <img src="image/screenshot14.jpg">
+          <img src="image/screenshot15.jpg">
+          <img src="image/screenshot16.jpg">
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>App Features</h2>
+      <div class="features">
+        <div class="feature-card"><h3>Verified Listings</h3><p>All rooms are manually verified for safety and accuracy.</p></div>
+        <div class="feature-card"><h3>Direct Contact</h3><p>Chat directly with owners — no middlemen, no hidden fees.</p></div>
+        <div class="feature-card"><h3>Smart Search</h3><p>Filter rooms by price, location, amenities, and ratings.</p></div>
+        <div class="feature-card"><h3>Secure Booking</h3><p>Easy booking process with verified tenants and landlords.</p></div>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <h2>What Our Users Say</h2>
+      <div class="testimonial">"Found a perfect PG in just 10 minutes! Amazing app for students."<span>— Priya Sharma</span></div>
+      <div class="testimonial">"UI is clean and easy to use. The verified listings are a big plus!"<span>— Rahul Mehta</span></div>
+    </section>
+
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <details><summary>Is RoomyRent free to use?</summary><p>Yes! RoomyRent is completely free for tenants to browse and connect with landlords.</p></details>
+      <details><summary>Can I list my property?</summary><p>Yes, property owners can list rooms for rent via our Android app.</p></details>
+      <details><summary>How often are listings updated?</summary><p>Listings are reviewed and refreshed every 7 days to ensure accuracy.</p></details>
+    </section>
+
+      <section>
+  <h2 style="text-align:center; margin-bottom:30px;">Our Other Services</h2>
+  <div style="
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      text-align: center;
+  ">
+    <a href="https://brothko.shop/" target="_blank" style="
+        background: rgba(255,255,255,0.1);
+        padding: 25px 35px;
+        border-radius: 16px;
+        text-decoration: none;
+        color: #f8fafc;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        width: 260px;
+    ">
+      🛍️ Brothko — Trendy Shopping Platform
+    </a>
+
+    <a href="https://securitysos.info/" target="_blank" style="
+        background: rgba(255,255,255,0.1);
+        padding: 25px 35px;
+        border-radius: 16px;
+        text-decoration: none;
+        color: #f8fafc;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        width: 260px;
+    ">
+      🔒 SecuritySOS — Online Safety Hub
+    </a>
+
+    <a href="https://buyshoal.shop/" target="_blank" style="
+        background: rgba(255,255,255,0.1);
+        padding: 25px 35px;
+        border-radius: 16px;
+        text-decoration: none;
+        color: #f8fafc;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        width: 260px;
+    ">
+      💼 BuyShoal — Smart Deals Marketplace
+    </a>
   </div>
 </section>
 
+<section style="text-align:center; margin:50px 0;">
+  <a href="contact.html" class="btn">📩 Contact Us</a>
+</section>
 
-    <!-- About Section -->
+
     <section>
-      <h2>Why RoomyRent?</h2>
-      <div class="glass-card">
-        <p>
-          RoomyRent helps students, professionals, and families find affordable rental rooms
-          quickly and manage their stays with ease. Experience a sleek UI, verified listings,
-          and fast booking—all in one app.
-        </p>
+      <div class="support">
+        <h3>Help & Support</h3>
+        <p>Need assistance or have feedback?</p>
+        <p>📧 Email: <a href="mailto:roomyrent.info@gmail.com">roomyrent.info@gmail.com</a></p>
+        <p>Our support team is available 7 days a week from 9 AM to 9 PM.</p>
       </div>
     </section>
   </main>
 
-  <footer>
-    © 2025 RoomyRent. All rights reserved.
-  </footer>
+  <footer>© 2025 RoomyRent. All rights reserved. | Made with ❤️ by Khudvivek Group</footer>
+  
+
+  <a class="floating-btn" href="https://github.com/Vishnushrivastav111/roomyrentapk/releases/latest/download/roomyrent.apk" download>⬇ Download APK</a>
+  <div id="backToTop">↑</div>
+
+  <!-- Modal for Screenshot View -->
+  <div id="modal" class="modal">
+    <img id="modalImg" src="">
+  </div>
+
+  <script>
+    // Back to top
+    const topBtn = document.getElementById("backToTop");
+    window.addEventListener("scroll", () => {
+      topBtn.style.display = window.scrollY > 300 ? "flex" : "none";
+    });
+    topBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Screenshot Modal
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modalImg");
+    document.querySelectorAll(".screenshot-marquee-inner img").forEach(img => {
+      img.addEventListener("click", () => {
+        modalImg.src = img.src;
+        modal.style.display = "flex";
+      });
+    });
+    modal.addEventListener("click", () => modal.style.display = "none");
+  </script>
 
 </body>
 </html>
