@@ -57,6 +57,28 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// ====== THEME TOGGLE ======
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleBtn = document.getElementById('themeToggle');
+  const currentTheme = localStorage.getItem('theme');
+
+  if (currentTheme === 'light') {
+    document.body.classList.add('light');
+    toggleBtn.textContent = '🌞';
+  } else {
+    document.body.classList.remove('light');
+    toggleBtn.textContent = '🌙';
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light');
+    const isLight = document.body.classList.contains('light');
+    toggleBtn.textContent = isLight ? '🌞' : '🌙';
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  });
+});
+
+
 // simple contact form handler with mailto fallback
 function handleForm(e){
   e.preventDefault();
